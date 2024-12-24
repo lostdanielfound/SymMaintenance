@@ -20,3 +20,5 @@ data class Task(
     val initial2: String?,
     val isCompleted: Boolean
 )
+class FatalError {
+}
