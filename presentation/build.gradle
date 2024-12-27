@@ -37,9 +37,6 @@ dependencies {
     //Material Design 3
     implementation libs.androidx.material3
 
-    //Foundation components
-    implementation libs.foundation
-
     //UI components and Preview Debugging
     implementation libs.androidx.ui
     implementation libs.androidx.ui.graphics
