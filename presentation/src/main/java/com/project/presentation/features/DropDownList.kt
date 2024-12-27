@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -18,7 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.project.presentation.data.generateFakeData
 import com.project.presentation.models.Task
+import java.util.UUID
 
 @Composable
 fun DropDownList(
@@ -71,5 +74,17 @@ fun DropDownList(
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewDropDownList() {
+    val expanded = false
+    val title = "Current Tasks"
 
+    val exampleList = generateFakeData.generateFakeTaskList()
+
+    DropDownList(
+        expanded = expanded,
+        title = title,
+        icon = { Icon(Icons.Filled.Build, contentDescription = null) },
+        onPressedRequest = {},
+        onDismissRequest = {},
+        items = exampleList
+    ) { }
 }
