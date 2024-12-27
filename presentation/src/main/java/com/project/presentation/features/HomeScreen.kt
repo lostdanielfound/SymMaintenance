@@ -24,7 +24,6 @@ fun HomeScreen() {
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-            DropdownMenu() { }
         }
     }
 }
