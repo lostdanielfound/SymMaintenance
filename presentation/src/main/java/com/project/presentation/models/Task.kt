@@ -4,6 +4,10 @@ import com.project.presentation.domain.FatalError
 import java.time.LocalDateTime
 import java.util.UUID
 
+/**
+ * ModelView of a Task
+ * If faterError is null, it's assumed that this task is a deck / aisle repair
+ */
 data class Task(
     val id: UUID,
     val createdAt: LocalDateTime?,
