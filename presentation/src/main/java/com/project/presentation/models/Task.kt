@@ -9,12 +9,14 @@ import java.util.UUID
  * If faterError is null, it's assumed that this task is a deck / aisle repair
  */
 data class Task(
-    val id: UUID,
+    val taskId: UUID,
+    val botId: Int?,
     val createdAt: LocalDateTime?,
     val finishedAt: LocalDateTime?,
     val module: Int?,
     val level: Int?,
     val mvc: Int?,
+    val mvcSide: Int?,
     val avenue: Int?,
     val aisle: Int?,
     val fatalError: FatalError?,
