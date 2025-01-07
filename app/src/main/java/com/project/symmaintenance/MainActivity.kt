@@ -11,6 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.project.symmaintenance.ui.routes.Routes
 import com.project.symmaintenance.ui.theme.SymMaintenanceTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +26,39 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SymMaintenanceTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                //The process of establishing a connection to the server should be done here before
+
+                val navController = rememberNavController()
+                NavHost(navController, Routes.Home) {
+                    homeScreen()
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SymMaintenanceTheme {
-        Greeting("Android")
+    private fun NavGraphBuilder.homeScreen(navController: NavController) {
+        composable(Routes.Home) {
+            HomeScreen(
+                onTaskRequest = { taskId ->
+                    navController.navigate("${Routes.Task}/$taskId")
+                }
+            )
+        }
+    }
+    private fun NavGraphBuilder.taskScreen() {
+        composable(Routes.Task) { backStackEntry ->
+            val taskId = backStackEntry.arguments?.getString("taskId")
+            TaskScreen(taskId = taskId)
+        }
+    }
+    private fun NavGraphBuilder.initScreen() {
+        composable(Routes.Init) {
+            InitScreen()
+        }
+    }
+    private fun NavGraphBuilder.settingsScreen() {
+        composable(Routes.Settings) {
+            SettingsScreen()
+        }
     }
 }
