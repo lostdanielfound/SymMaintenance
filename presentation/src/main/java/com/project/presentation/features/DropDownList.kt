@@ -40,7 +40,10 @@ fun DropDownList(
     title: String,
     icon: ImageVector,
     dropDownDescription: String?,
-    onPressedRequest: () -> Unit,
+    onPressedRequest: () -> Unit, // When the DropDownList is pressed to expand
+    onDetailsPress: (String) -> Unit, // When a TaskItem is clicked
+    onCompletePress: (String) -> Unit,
+    onUnCompletePress: (String) -> Unit,
     modifier: Modifier = Modifier,
     items: List<Task>,
 ) {
@@ -99,7 +102,12 @@ fun DropDownList(
                         .padding(4.dp)
                 ) {
                     items(items) { item ->
-                        TaskItem(item, {}, {}, {})
+                        TaskItem(
+                            item,
+                            { taskId -> onCompletePress(taskId) },
+                            { taskId -> onUnCompletePress(taskId) },
+                            { taskId -> onDetailsPress(taskId) }
+                        )
                     }
                 }
             }
@@ -121,6 +129,9 @@ fun PreviewDropDownList() {
         icon = Icons.Filled.Build,
         dropDownDescription = dropDownDescription,
         onPressedRequest = {},
-        items = exampleList
+        {},
+        {},
+        {},
+        items = exampleList,
     )
 }

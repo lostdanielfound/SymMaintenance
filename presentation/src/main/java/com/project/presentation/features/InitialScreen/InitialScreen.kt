@@ -1,4 +1,4 @@
-package com.project.presentation.features
+package com.project.presentation.features.InitialScreen
 
 import androidx.compose.runtime.Composable
 
