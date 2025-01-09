@@ -4,19 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.project.presentation.features.HomeScreen.HomeScreen
+import com.project.presentation.features.InitialScreen.InitialScreen
+import com.project.presentation.features.SettingsScreen.SettingScreen
+import com.project.presentation.features.TaskScreen.TaskScreen
 import com.project.symmaintenance.ui.routes.Routes
 import com.project.symmaintenance.ui.theme.SymMaintenanceTheme
 
@@ -30,7 +26,10 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
                 NavHost(navController, Routes.Home) {
-                    homeScreen()
+                    homeScreen(navController)
+                    taskScreen()
+                    initScreen()
+                    settingsScreen()
                 }
             }
         }
@@ -41,6 +40,9 @@ class MainActivity : ComponentActivity() {
             HomeScreen(
                 onTaskRequest = { taskId ->
                     navController.navigate("${Routes.Task}/$taskId")
+                },
+                onClickRequestTesting = { route ->
+                    navController.navigate(route)
                 }
             )
         }
@@ -53,12 +55,12 @@ class MainActivity : ComponentActivity() {
     }
     private fun NavGraphBuilder.initScreen() {
         composable(Routes.Init) {
-            InitScreen()
+            InitialScreen()
         }
     }
     private fun NavGraphBuilder.settingsScreen() {
         composable(Routes.Settings) {
-            SettingsScreen()
+            SettingScreen()
         }
     }
 }
