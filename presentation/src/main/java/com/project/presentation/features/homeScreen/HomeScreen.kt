@@ -1,4 +1,4 @@
-package com.project.presentation.features.HomeScreen
+package com.project.presentation.features.homeScreen
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons

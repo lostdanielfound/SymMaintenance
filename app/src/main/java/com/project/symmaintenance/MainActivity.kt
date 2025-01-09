@@ -9,10 +9,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.project.presentation.features.HomeScreen.HomeScreen
-import com.project.presentation.features.InitialScreen.InitialScreen
-import com.project.presentation.features.SettingsScreen.SettingScreen
-import com.project.presentation.features.TaskScreen.TaskScreen
+import com.project.presentation.features.homeScreen.HomeScreen
+import com.project.presentation.features.initialScreen.InitialScreen
+import com.project.presentation.features.settingsScreen.SettingScreen
+import com.project.presentation.features.taskScreen.TaskScreen
 import com.project.symmaintenance.ui.routes.Routes
 import com.project.symmaintenance.ui.theme.SymMaintenanceTheme
 

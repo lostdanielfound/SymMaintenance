@@ -1,4 +1,4 @@
-package com.project.presentation.features.SettingsScreen
+package com.project.presentation.features.settingsScreen
 
 import androidx.compose.runtime.Composable
 
