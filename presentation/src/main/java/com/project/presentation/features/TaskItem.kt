@@ -39,9 +39,9 @@ import com.project.presentation.models.Task
 @Composable
 fun TaskItem(
     task: Task,
-    onCompletePress: (taskId: UUID) -> Unit,
-    onUnCompletePress: (taskId: UUID) -> Unit,
-    onDetailsPress:  (taskId: UUID) -> Unit
+    onCompletePress: (taskId: String) -> Unit,
+    onUnCompletePress: (taskId: String) -> Unit,
+    onDetailsPress:  (taskId: String) -> Unit
 ) {
     val surfaceColor = if (task.isCompleted) Color(0xff70bf6d) else Color.Transparent
 
@@ -94,11 +94,11 @@ fun TaskItem(
             ) {
                 // Putting a switch would be a better indicater for the user.
                 if (!task.isCompleted) {
-                    IconButton( onClick = { onCompletePress(task.taskId) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Done, contentDescription = "Complete Task", modifier = Modifier.size(18.dp)) }
+                    IconButton( onClick = { onCompletePress(task.taskId.toString()) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Done, contentDescription = "Complete Task", modifier = Modifier.size(18.dp)) }
                 } else {
-                    IconButton( onClick = { onUnCompletePress(task.taskId) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Close, contentDescription = "Uncomplete task", modifier = Modifier.size(18.dp)) }
+                    IconButton( onClick = { onUnCompletePress(task.taskId.toString()) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Close, contentDescription = "Uncomplete task", modifier = Modifier.size(18.dp)) }
                 }
-                IconButton( onClick = { onDetailsPress(task.taskId) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Info, contentDescription = "See details", modifier = Modifier.size(18.dp)) }
+                IconButton( onClick = { onDetailsPress(task.taskId.toString()) }, modifier = Modifier.size(18.dp)) { Icon(imageVector = Icons.Filled.Info, contentDescription = "See details", modifier = Modifier.size(18.dp)) }
             }
         }
     }
