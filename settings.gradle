@@ -21,6 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "SymMaintenance"
 include ':app'
-include ':domain'
-include ':presentation'
-include ':data'
+include ':common:framework'
+include ':common:data'
+include ':common:domain'
+include ':feature:sign_in'
+include ':feature:change_config'
+include ':feature:view_tasks'
+include ':feature:view_task'

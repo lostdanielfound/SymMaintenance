@@ -38,7 +38,13 @@ android {
 
 dependencies {
 
-
+    //module dependency
+    implementation project(':feature:sign_in')
+    implementation project(':feature:view_task')
+    implementation project(':feature:view_tasks')
+    implementation project(':feature:change_config')
+    implementation project(':common:data')
+    implementation project(':common:framework')
 
     //Jetpack compose
     implementation libs.androidx.core.ktx
@@ -58,7 +64,6 @@ dependencies {
 
     //Matieral 3 implementations
     implementation libs.androidx.material3
-    implementation project(':presentation')
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
